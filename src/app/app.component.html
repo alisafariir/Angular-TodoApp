@@ -1,9 +1,2 @@
-<h1 [id]="id">Hello, {{ name }}</h1>
-
-<label for="username">Username</label><br />
-<input
-  [(ngModel)]="username"
-  id="username"
-  class="bg-slate-200 border p-4 rounded-md"
-/>
-<p>{{ username }}</p>
+<app-header caption="Home" (onLogoutClick)="logClick($event)"></app-header>
+<app-header caption="About" (onLogoutClick)="logClick($event)"></app-header>

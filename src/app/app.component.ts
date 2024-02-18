@@ -17,4 +17,8 @@ export class AppComponent {
   id = 'u-0';
 
   username = 'alisafari';
+
+  logClick(e: any) {
+    console.log(e);
+  }
 }
