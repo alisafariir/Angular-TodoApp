@@ -12,13 +12,14 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
 })
 export class AppComponent {
-  name = 'Ali Safari';
+  name = 'Ali ';
 
-  id = 'u-0';
+  id = 'el-1';
 
-  username = 'alisafari';
-
-  logClick(e: any) {
-    console.log(e);
+  handleClick() {
+    alert(`Hello ${this.name}`);
+  }
+  handleMouseEnter(e: MouseEvent) {
+    console.log({ x: e.x, y: e.y });
   }
 }
