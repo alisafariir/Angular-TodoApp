@@ -16,10 +16,7 @@ export class AppComponent {
 
   id = 'el-1';
 
-  handleClick() {
-    alert(`Hello ${this.name}`);
-  }
-  handleMouseEnter(e: MouseEvent) {
-    console.log({ x: e.x, y: e.y });
+  handleCaptionClick(e: any) {
+    alert(`caption clicked ${e}`);
   }
 }

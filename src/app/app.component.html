@@ -1,16 +1,4 @@
-<div class="m-8">
-  <input
-    class="px-4 py-2 rounded-md border mb-4"
-    placeholder="Enter your name..."
-    [(ngModel)]="name"
-  />
-  <h1 class="text-2xl" [id]="id" [attr.data-name]="name">Hello, {{ name }}</h1>
-
-  <button
-    class="bg-blue-500 px-4 py-2 rounded-md text-white"
-    (click)="handleClick()"
-    (mouseenter)="handleMouseEnter($event)"
-  >
-    Say hello
-  </button>
-</div>
+<app-header
+  [caption]="'Todos'"
+  (onCaptionClick)="handleCaptionClick($event)"
+></app-header>

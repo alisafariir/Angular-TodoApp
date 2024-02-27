@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
@@ -9,22 +9,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [MatToolbarModule],
   providers: [],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Input()
-  caption = '';
+  caption: string = 'Home';
 
   @Output()
-  onLogoutClick: EventEmitter<any> = new EventEmitter();
+  onCaptionClick: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  handleLogoutClick() {
-    this.onLogoutClick.emit(this.caption);
-  }
-
-  onMouseOver(e: MouseEvent) {
-    console.log(e);
+  handleCaptionClick() {
+    this.onCaptionClick.emit(this.caption);
   }
 }
