@@ -1,4 +1,4 @@
-<app-header
-  [caption]="'Todos'"
-  (onCaptionClick)="handleCaptionClick($event)"
-></app-header>
+<pre>
+  {{ user | json }}
+</pre>
+<button (click)="handleSetUserData()">Set User Data</button>
