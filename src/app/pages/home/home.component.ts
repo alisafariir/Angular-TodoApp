@@ -1,13 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <h1>Home Page</h1>
-    <button (click)="handleNavigateTodo()">Navigate to todo page</button>
-  `,
+  templateUrl: './home.component.html',
   standalone: true,
+  imports: [MatListModule, MatListModule],
 })
 export class HomeComponents implements OnInit {
   router: Router = inject(Router);
@@ -17,5 +16,9 @@ export class HomeComponents implements OnInit {
 
   handleNavigateTodo() {
     this.router.navigate(['todo', 1023, 'Todo number one']);
+  }
+
+  handleClick(e: MouseEvent) {
+    console.log(e);
   }
 }

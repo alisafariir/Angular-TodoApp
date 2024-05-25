@@ -1,3 +1,30 @@
-<router-outlet></router-outlet>
-<header class="h-52 bg-slate-200">Header</header>
-<footer class="h-96 bg-slate-200">Footer</footer>
+<mat-drawer-container class="h-full" [hasBackdrop]="true">
+  <mat-drawer #d [mode]="'over'">I'm a drawer</mat-drawer>
+  <mat-drawer-content>
+    <div class="flex flex-col justify-between h-full">
+      <mat-toolbar color="primary">
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with menu icon"
+          (click)="d.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Todo</span>
+        <span class="flex-1"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="flex-1 p-6 overflow-y-auto overflow-x-hidden">
+        <router-outlet></router-outlet>
+      </div>
+      <footer class="h-auto px-6 py-4 bg-slate-100">created with ❤️</footer>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
