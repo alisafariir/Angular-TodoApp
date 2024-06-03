@@ -1,6 +1,43 @@
-<mat-list>
-  <mat-list-item>Item</mat-list-item>
-  <mat-list-item>Item</mat-list-item>
-  <mat-list-item>Item</mat-list-item>
-  <mat-list-item>Item</mat-list-item>
-</mat-list>
+<mat-card>
+  <mat-card-content>
+    @if(user.token){
+    <div class="card-align">
+      <div class="flex gap-2">
+        <div>Hi, {{ user.firstName }}</div>
+        <div>
+          @switch (user.region) { @case('IR'){
+          <div>IRAN</div>
+          } @case('US'){
+          <div>United State</div>
+          } @default {
+          <div>ℹ️</div>
+          } }
+        </div>
+      </div>
+      <button mat-button color="warn">Logout</button>
+    </div>
+    } @else {
+    <div class="card-align">
+      <div>Please login</div>
+      <button mat-button>Login</button>
+    </div>
+    }
+  </mat-card-content>
+</mat-card>
+@if(user.token){
+
+<mat-selection-list #shoes>
+  @for (todo of todos; track $index) {
+  <mat-list-option [selected]="todo.completed">{{
+    todo.title
+  }}</mat-list-option>
+  } @empty {
+  <div
+    class="text-lg flex flex-col gap-4 bg-white p-4 rounded-lg items-center justify-center border border-slate-200"
+  >
+    <div>😊</div>
+    <div>No Items.</div>
+  </div>
+  }
+</mat-selection-list>
+}
