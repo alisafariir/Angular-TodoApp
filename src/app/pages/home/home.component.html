@@ -1,3 +1,5 @@
+<!-- <input value="Input value" #input />
+{{ input.clientHeight | json }} -->
 <mat-card>
   <mat-card-content>
     @if(user.token){
@@ -25,8 +27,23 @@
   </mat-card-content>
 </mat-card>
 @if(user.token){
+<button mat-button (click)="handleSelectAll()">Select All</button>
+<mat-selection-list #todoList>
+  @for (todo of todos; track $index) {
+  <mat-list-option [selected]="todo.completed">{{
+    todo.title
+  }}</mat-list-option>
+  } @empty {
+  <div
+    class="text-lg flex flex-col gap-4 bg-white p-4 rounded-lg items-center justify-center border border-slate-200"
+  >
+    <div>😊</div>
+    <div>No Items.</div>
+  </div>
+  }
+</mat-selection-list>
 
-<mat-selection-list #shoes>
+<mat-selection-list>
   @for (todo of todos; track $index) {
   <mat-list-option [selected]="todo.completed">{{
     todo.title

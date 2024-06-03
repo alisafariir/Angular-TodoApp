@@ -1,18 +1,36 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { MatListModule } from '@angular/material/list';
+import { MatListModule, MatSelectionList } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [MatListModule, MatListModule, MatCardModule, MatButtonModule],
+  imports: [
+    MatListModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    JsonPipe,
+  ],
 })
 export class HomeComponents implements OnInit {
   router: Router = inject(Router);
+
+  @ViewChild('todoList') todoList!: MatSelectionList;
+
+  @ViewChildren(MatSelectionList) selectionLists!: QueryList<MatSelectionList>;
 
   user: any = {
     token: '1215a4sd5sa4da5s4d5sa4d',
@@ -57,11 +75,25 @@ export class HomeComponents implements OnInit {
 
   ngOnInit(): void {}
 
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    // this.todoList.selectAll();
+  }
+
   handleNavigateTodo() {
     this.router.navigate(['todo', 1023, 'Todo number one']);
   }
 
   handleClick(e: MouseEvent) {
     console.log(e);
+  }
+
+  handleSelectAll() {
+    // this.todoList.selectAll();
+
+    this.selectionLists.forEach((c) => {
+      c.selectAll();
+    });
   }
 }
